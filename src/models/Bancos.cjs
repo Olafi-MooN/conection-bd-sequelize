@@ -10,5 +10,9 @@ class Bancos extends Model {
             sequelize
         })
     }
+    static associate(models) {
+        this.hasMany(models.Agencias, { foreignKey: 'id_bancos', as: 'Agencias' })
+    }
 }
+
 module.exports = Bancos;

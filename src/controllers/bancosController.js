@@ -1,16 +1,26 @@
 import Bancos from '../models/Bancos.cjs';
-import { sequelize } from '../database/index.js';
 
 async function store(req, res) {
-    Bancos.init(sequelize);
+    const { cnpj, company_name, contact } = req.body;
+
+    if (!cnpj || !company_name || !contact) {
+        return res.json({ 
+            status: false,
+            result: 'É necessário informar todos os campos' 
+        });
+    }
 
     const bancos = await Bancos.create({
-        cnpj: '12090032123',
-        company_name: 'Bradesco',
-        contact: '31000983213',
-    })
+        cnpj,
+        company_name,
+        contact,
+    });
 
-    return res.json({ on: bancos });
+    return res.json({ 
+        status: true,
+        date: bancos,
+        result: 'Usuário inserido com sucesso!' 
+    });    
 }
 
 export { store };

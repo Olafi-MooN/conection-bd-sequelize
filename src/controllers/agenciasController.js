@@ -1,16 +1,35 @@
 import Agencias from '../models/Agencias.cjs';
-import { sequelize } from '../database/index.js';
+import Bancos from '../models/Bancos.cjs';
 
 async function store(req, res) {
-    Agencias.init(sequelize);
+    const { id_bancos } = req.params;
+    const {
+        number_agency,
+        description_agency
+    } = req.body;
 
-    const agencias = await Agencias.create({
-        number_agency: '1856',
-        description_agency: 'make a good job',
-        id_bancos: 1,
-    })
+    try {
+        const agencias = await Agencias.create({
+            number_agency,
+            description_agency,
+            id_bancos,
+        });
 
-    return res.json({ on: agencias });
+        return res.json({ on: agencias });
+
+    } catch (error) {
+        return res.json({ on: error })
+    }
 }
 
-export { store };
+async function index(req, res) {
+    const { id_bancos } = req.params;
+
+    const banco = await Bancos.findByPk(id_bancos, {
+        include: { association: 'Agencias' }
+    });
+
+    return res.json({banco})
+}
+
+export { store, index };

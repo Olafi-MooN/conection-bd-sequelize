@@ -1,15 +1,19 @@
 import Clientes from '../models/Clientes.cjs';
-import { sequelize } from '../database/index.js';
 
 async function store(req, res) {
-    Clientes.init(sequelize);
+    const { 
+        name,
+        cpf,
+        salary,
+        gender,
+        contact, } = req.body;
 
     const clientes = await Clientes.create({
-        name: 'Alef',
-        cpf: '70050873644',
-        salary: 5000,
-        gender: 'Masculino',
-        contact: '31 9 75452891'
+        name,
+        cpf,
+        salary,
+        gender,
+        contact 
     })
 
     return res.json({ on: clientes });

@@ -5,10 +5,13 @@ class Agencias extends Model {
         super.init({
             number_agency: DataTypes.STRING,
             description_agency: DataTypes.STRING,
-            id_bancos: DataTypes.NUMBER,
         }, {
             sequelize
         })
+    }
+
+    static associate(models) {
+        this.belongsTo(models.Bancos, {foreignKey: 'id_bancos', as: 'Bancos'})
     }
 }
 
