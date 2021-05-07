@@ -1,7 +1,7 @@
 const config = {
   "development": {
     "dialect": "sqlite",
-    "storage": "./database.sqlite",
+    "storage": "./src/database/database.sqlite",
     "define": {
       "timestamps": true,
       "underscored": true,

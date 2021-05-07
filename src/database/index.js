@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
-import { config } from '../config/database.cjs'
+import config from '../config/database.cjs'
 
-const sequelize = new Sequelize(config.development).init();
+const sequelize = new Sequelize(config.development);
 
 async function connection_db () {
     const database = sequelize;
