@@ -18,8 +18,8 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      gender: {
-        type: Sequelize.STRING,
+      salary: {
+        type: Sequelize.NUMBER,
         allowNull: false
       },
       gender: {
@@ -31,12 +31,12 @@ module.exports = {
         allowNull: false
       },
       created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)'),
+        type: Sequelize.DATE(),
+        allowNull: false,
       },
       updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)'),
+        type: Sequelize.DATE(),
+        allowNull: false,
       },
 
     });

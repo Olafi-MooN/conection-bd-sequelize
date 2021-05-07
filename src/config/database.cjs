@@ -1,7 +1,11 @@
 const config = {
   "development": {
     "dialect": "sqlite",
-    "storage": "./database.sqlite"
+    "storage": "./database.sqlite",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+    }
   },
   "test": {
     "username": "root",
@@ -19,4 +23,4 @@ const config = {
   }
 }
 
-export { config };
+module.exports = config;
